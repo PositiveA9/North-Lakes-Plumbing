@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>North Lakes Plumbing LLC | Plumbing Service</title>
+  <meta name="description" content="North Lakes Plumbing is your trusted partner for all your plumbing needs. Residential, Commercial, New Construction, Remodels, Water Conditioning, and Service.">
+  <link rel="canonical" href="https://www.northlakesplumbing.com">
+  <link rel="icon" href="https://static.wixstatic.com/media/b67ca5_34bb294fb3364c1b911df00f7808d707%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/b67ca5_34bb294fb3364c1b911df00f7808d707%7Emv2.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      background:
+        linear-gradient(to right, rgba(13,31,60,0.88) 40%, rgba(13,31,60,0.50) 100%),
+        url('https://images.pexels.com/photos/3721272/pexels-photo-3721272.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content { max-width: 600px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,160,32,0.15);
+      border: 1px solid rgba(232,160,32,0.4);
+      border-radius: 40px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 22px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-desc {
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .hero-phone {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 36px;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .hero-phone svg { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--accent);
+      padding: 0;
+    }
+
+    .trust-bar .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 22px 16px;
+      border-right: 1px solid rgba(0,0,0,0.12);
+      text-align: center;
+    }
+    .trust-item:last-child { border-right: none; }
+
+    .trust-item svg { flex-shrink: 0; color: var(--navy); }
+
+    .trust-item strong {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── ABOUT ── */
+    .about { padding: 96px 0; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(232,160,32,0.4);
+    }
+
+    .about-badge strong {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .about-badge span {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .about-text h2 {
+      font-size: clamp(30px, 4vw, 42px);
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 18px;
+    }
+
+    .about-text p:last-of-type { margin-bottom: 32px; }
+
+    /* ── SERVICES PREVIEW ── */
+    .services-preview {
+      background: var(--light);
+      padding: 96px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header h2 { font-size: clamp(30px, 4vw, 42px); margin-bottom: 14px; }
+    .section-header p  { color: var(--gray); max-width: 560px; margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(13,31,60,0.06);
+      transition: var(--trans);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(13,31,60,0.13);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .service-card-body { padding: 24px; }
+
+    .service-card-body h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .service-card-body p {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .services-cta {
+      text-align: center;
+      margin-top: 44px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 96px 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials::before {
+      content: '\201C';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 320px;
+      font-family: Georgia, serif;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .testimonials .section-header h2,
+    .testimonials .section-label { color: var(--white); }
+    .testimonials .section-header p { color: rgba(255,255,255,0.60); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .stars svg { color: var(--accent); }
+
+    .testimonial-card blockquote {
+      font-size: 16px;
+      font-style: italic;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-author {
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--blue);
+      padding: 72px 0;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .cta-band p {
+      color: rgba(255,255,255,0.75);
+      font-size: 18px;
+      margin-bottom: 36px;
+    }
+
+    .cta-band-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip {
+      padding: 72px 0;
+    }
+
+    .contact-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .contact-card {
+      text-align: center;
+      padding: 36px 24px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: var(--trans);
+    }
+
+    .contact-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 24px rgba(26,74,138,0.10);
+    }
+
+    .contact-card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--blue);
+    }
+
+    .contact-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      font-size: 15px;
+      color: var(--gray);
+    }
+
+    .contact-card a { color: var(--blue); }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid        { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid     { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-strip-grid{ grid-template-columns: 1fr; }
+      .trust-bar .container { grid-template-columns: 1fr; }
+      .trust-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.12); }
+      .trust-item:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .about-badge { width: 96px; height: 96px; bottom: -12px; right: -12px; }
+      .about-badge strong { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img
+          src="https://static.wixstatic.com/media/b67ca5_34bb294fb3364c1b911df00f7808d707~mv2.jpg/v1/crop/x_0,y_187,w_1386,h_1427/fill/w_125,h_125,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/NLP%202_edited.jpg"
+          alt="North Lakes Plumbing logo"
+          class="navbar-logo">
+        <div class="navbar-name">
+          North Lakes Plumbing
+          <span>LLC</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="tel:7633342088" class="nav-cta">Call Now</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Quality Plumbing<br><span>You Can Trust</span></h1>
+        <p class="hero-desc">Serving the Minneapolis Metro with reliable residential, commercial, and new construction plumbing services. Licensed, bonded, and insured.</p>
+        <div class="hero-actions">
+          <a href="contactus.html" class="btn btn-primary">Request a Free Quote</a>
+          <a href="services.html" class="btn btn-outline">View Our Services</a>
+        </div>
+        <div class="hero-phone">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.13.96.35 1.9.66 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:7633342088">(763) 334-2088</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TRUST BAR ══ -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <strong>Licensed, Bonded &amp; Insured</strong>
+      </div>
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <strong>Free Estimates</strong>
+      </div>
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <strong>Satisfaction Guaranteed</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ABOUT ══ -->
+  <section class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img
+            src="https://static.wixstatic.com/media/b67ca5_b414d8a4486a49c39e6e8cb78a296b19~mv2.png"
+            alt="North Lakes Plumbing team at work">
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <span class="section-label">About Us</span>
+          <h2>Building Relationships &amp; Delivering Quality</h2>
+          <p>Are you looking for a reliable and professional plumber to handle your plumbing needs? Look no further than North Lakes Plumbing.</p>
+          <p>We have the experience and expertise to handle any plumbing project, big or small. Whether you need a new faucet, a water heater, a sewer line, or a complete bathroom remodel, we can do it all. We use the latest tools and techniques to ensure quality workmanship and customer satisfaction.</p>
+          <p>We offer competitive pricing and free estimates for all our services. Plus, we are licensed, bonded, and insured for your peace of mind.</p>
+          <a href="contactus.html" class="btn btn-primary">Get a Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES PREVIEW ══ -->
+  <section class="services-preview">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What We Do</span>
+        <h2>Our Plumbing Services</h2>
+        <p>From emergency repairs to proactive maintenance and cutting-edge installations, we've got you covered.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <img src="https://static.wixstatic.com/media/b67ca5_d9b245c51a3f4262b7a21986e9ed5a1f~mv2.jpg/v1/crop/x_899,y_0,w_3597,h_3597/fill/w_240,h_240,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-kaboompics-com-6256.jpg" alt="Residential Plumbing">
+          <div class="service-card-body">
+            <h3>Residential Plumbing</h3>
+            <p>All your in-home plumbing needs — sinks, toilets, showers, pipe maintenance and repair.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <img src="https://static.wixstatic.com/media/nsplsh_8aec99ad8fe44c45987604fa98733879~mv2.jpg/v1/crop/x_500,y_0,w_2008,h_2008/fill/w_240,h_240,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Steven%20Ungermann.jpg" alt="Commercial Plumbing">
+          <div class="service-card-body">
+            <h3>Commercial Plumbing</h3>
+            <p>Custom plumbing solutions for businesses — from installation and maintenance to dependable drainage.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <img src="https://static.wixstatic.com/media/nsplsh_72b533d375294ab28704741a186854e5~mv2.jpg/v1/crop/x_295,y_0,w_5304,h_5304/fill/w_240,h_240,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Marian%20Florinel%20Condruz.jpg" alt="New Construction">
+          <div class="service-card-body">
+            <h3>New Construction</h3>
+            <p>Efficient plumbing systems for newly built structures that meet modern standards from the ground up.</p>
+          </div>
+        </div>
+      </div>
+      <div class="services-cta reveal">
+        <a href="services.html" class="btn btn-primary">See All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What Customers Say</span>
+        <h2>Trusted by Homeowners Across the Metro</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"We've only had top tier service from North Lakes. Attentive, professional, top notch work, and very competitive prices. The investment far exceeded our expectations. We have used them multiple times, and plan to continue using them."</blockquote>
+          <div class="testimonial-author">— Tyler O., Otsego</div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"North Lakes Plumbing did amazing work and was super responsive after we had a major plumbing issue that required a new boiler, water softener, water pump, and major pipe repairs. They worked quickly to restore water to our home and were great to work with. I recommend them to anyone who wants great service and quality work!"</blockquote>
+          <div class="testimonial-author">— Kally W., Champlin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BAND ══ -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Don't Let a Leaky Pipe Ruin Your Day</h2>
+      <p>Contact North Lakes Plumbing today — competitive pricing, free estimates, same-day service available.</p>
+      <div class="cta-band-actions">
+        <a href="contactus.html" class="btn btn-primary">Request a Quote</a>
+        <a href="tel:7633342088" class="btn btn-outline">(763) 334-2088</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT STRIP ══ -->
+  <section class="contact-strip">
+    <div class="container">
+      <div class="contact-strip-grid">
+        <div class="contact-card reveal">
+          <div class="contact-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Address</h3>
+          <p>10408 180th Ave NW<br>Elk River, MN 55330</p>
+        </div>
+        <div class="contact-card reveal reveal-delay-2">
+          <div class="contact-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.13.96.35 1.9.66 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>Phone</h3>
+          <p><a href="tel:7633342088">(763) 334-2088</a></p>
+        </div>
+        <div class="contact-card reveal reveal-delay-3">
+          <div class="contact-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Business Hours</h3>
+          <p>Mon – Fri: 7:30am – 4:00pm<br>Sat – Sun: Closed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-name">
+            North Lakes Plumbing
+            <span>LLC</span>
+          </div>
+          <p class="footer-tagline">Your trusted partner for residential, commercial, and new construction plumbing throughout the Minneapolis Metro area.</p>
+          <a href="tel:7633342088" class="btn btn-primary">(763) 334-2088</a>
+        </div>
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            10408 180th Ave NW<br>Elk River, MN 55330
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.13.96.35 1.9.66 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:7633342088">(763) 334-2088</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="/cdn-cgi/l/email-protection#297a414c404548076d405146476947465b5d414548424c5a59455c444b40474e074a4644"><span class="__cf_email__" data-cfemail="17447f727e7b7639537e6f787957797865637f7b767c7264677b627a757e79703974787a">[email&#160;protected]</span></a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Mon–Fri: 7:30am – 4:00pm
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>©2025 North Lakes Plumbing, LLC. All rights reserved.</span>
+        <span>Licensed · Bonded · Insured</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

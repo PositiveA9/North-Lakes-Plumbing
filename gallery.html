@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | North Lakes Plumbing</title>
+  <meta name="description" content="View our portfolio of plumbing work — residential, commercial, new construction, and remodels throughout the Minneapolis Metro.">
+  <link rel="icon" href="https://static.wixstatic.com/media/b67ca5_34bb294fb3364c1b911df00f7808d707%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/b67ca5_34bb294fb3364c1b911df00f7808d707%7Emv2.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-section { padding: 80px 0 100px; }
+
+    /* Masonry-style grid */
+    .gallery-grid {
+      columns: 3;
+      column-gap: 16px;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      overflow: hidden;
+      border-radius: 6px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    .gallery-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,31,60,0.6) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+    .gallery-item-overlay span {
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,10,20,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--trans);
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.10);
+      border: none;
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--trans);
+    }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.22); }
+
+    /* CTA */
+    .gallery-cta {
+      text-align: center;
+      padding: 72px 0;
+      background: var(--light);
+    }
+    .gallery-cta h2 { font-size: clamp(26px, 3.5vw, 36px); margin-bottom: 14px; }
+    .gallery-cta p  { color: var(--gray); margin-bottom: 32px; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) { .gallery-grid { columns: 2; } }
+    @media (max-width: 480px) { .gallery-grid { columns: 1; } }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img
+          src="https://static.wixstatic.com/media/b67ca5_34bb294fb3364c1b911df00f7808d707~mv2.jpg/v1/crop/x_0,y_187,w_1386,h_1427/fill/w_125,h_125,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/NLP%202_edited.jpg"
+          alt="North Lakes Plumbing logo" class="navbar-logo">
+        <div class="navbar-name">
+          North Lakes Plumbing
+          <span>LLC</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="tel:7633342088" class="nav-cta">Call Now</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <div class="page-hero">
+    <span class="section-label">Our Work</span>
+    <h1>Project Gallery</h1>
+    <p>A look at some of the residential, commercial, and new construction plumbing work we're proud of.</p>
+  </div>
+
+  <!-- ══ GALLERY ══ -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-grid reveal">
+
+        <div class="gallery-item" data-index="0">
+          <img src="https://static.wixstatic.com/media/b67ca5_8142a0ede71247539473c2d83b8b7f27~mv2.png/v1/fill/w_624,h_622,q_90,enc_avif,quality_auto/b67ca5_8142a0ede71247539473c2d83b8b7f27~mv2.png" alt="Plumbing project 1">
+          <div class="gallery-item-overlay"><span>View</span></div>
+        </div>
+
+        <div class="gallery-item" data-index="1">
+          <img src="https://static.wixstatic.com/media/b67ca5_9f81558983864dee90296c16e581abd2~mv2.png/v1/fill/w_624,h_622,q_90,enc_avif,quality_auto/b67ca5_9f81558983864dee90296c16e581abd2~mv2.png" alt="Plumbing project 2">
+          <div class="gallery-item-overlay"><span>View</span></div>
+        </div>
+
+        <div class="gallery-item" data-index="2">
+          <img src="https://static.wixstatic.com/media/b67ca5_d56aa5f0a6b44983a70e1804f4fbddac~mv2.png/v1/fill/w_622,h_622,q_90,enc_avif,quality_auto/b67ca5_d56aa5f0a6b44983a70e1804f4fbddac~mv2.png" alt="Plumbing project 3">
+          <div class="gallery-item-overlay"><span>View</span></div>
+        </div>
+
+        <div class="gallery-item" data-index="3">
+          <img src="https://static.wixstatic.com/media/b67ca5_db739e9188924060a0c3c3a25956b59d~mv2.png/v1/fill/w_624,h_622,q_90,enc_avif,quality_auto/b67ca5_db739e9188924060a0c3c3a25956b59d~mv2.png" alt="Plumbing project 4">
+          <div class="gallery-item-overlay"><span>View</span></div>
+        </div>
+
+        <div class="gallery-item" data-index="4">
+          <img src="https://static.wixstatic.com/media/b67ca5_6b5561bb3f9a4afaaf82dc55179dd46a~mv2.png/v1/fill/w_624,h_622,q_90,enc_avif,quality_auto/b67ca5_6b5561bb3f9a4afaaf82dc55179dd46a~mv2.png" alt="Plumbing project 5">
+          <div class="gallery-item-overlay"><span>View</span></div>
+        </div>
+
+        <div class="gallery-item" data-index="5">
+          <img src="https://static.wixstatic.com/media/b67ca5_0b529fbe3ac24a948a67299c1118aa2a~mv2.png/v1/fill/w_622,h_622,q_90,enc_avif,quality_auto/b67ca5_0b529fbe3ac24a948a67299c1118aa2a~mv2.png" alt="Plumbing project 6">
+          <div class="gallery-item-overlay"><span>View</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LIGHTBOX ══ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lb-close" aria-label="Close">✕</button>
+    <button class="lightbox-prev" id="lb-prev" aria-label="Previous">‹</button>
+    <img src="" alt="Enlarged project photo" id="lb-img">
+    <button class="lightbox-next" id="lb-next" aria-label="Next">›</button>
+  </div>
+
+  <!-- ══ CTA ══ -->
+  <section class="gallery-cta">
+    <div class="container">
+      <span class="section-label">Start Your Project</span>
+      <h2>Impressed By Our Work?</h2>
+      <p>Contact us today for a free estimate on your next plumbing project.</p>
+      <a href="contactus.html" class="btn btn-primary">Request a Free Quote</a>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-name">North Lakes Plumbing <span>LLC</span></div>
+          <p class="footer-tagline">Your trusted partner for residential, commercial, and new construction plumbing throughout the Minneapolis Metro area.</p>
+          <a href="tel:7633342088" class="btn btn-primary">(763) 334-2088</a>
+        </div>
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            10408 180th Ave NW, Elk River, MN 55330
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.13.96.35 1.9.66 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:7633342088">(763) 334-2088</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Mon–Fri: 7:30am – 4:00pm
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>©2025 North Lakes Plumbing, LLC. All rights reserved.</span>
+        <span>Licensed · Bonded · Insured</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Gallery lightbox
+    const images = Array.from(document.querySelectorAll('.gallery-item img')).map(i => i.src);
+    let current = 0;
+
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lb-img');
+
+    function openLightbox(index) {
+      current = index;
+      lbImg.src = images[index];
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.gallery-item').forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+    });
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', () => openLightbox((current - 1 + images.length) % images.length));
+    document.getElementById('lb-next').addEventListener('click', () => openLightbox((current + 1) % images.length));
+
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft')  openLightbox((current - 1 + images.length) % images.length);
+      if (e.key === 'ArrowRight') openLightbox((current + 1) % images.length);
+    });
+  </script>
+</body>
+</html>

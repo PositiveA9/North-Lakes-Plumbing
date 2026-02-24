@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | North Lakes Plumbing</title>
+  <meta name="description" content="Contact North Lakes Plumbing for a free estimate. Serving the Minneapolis Metro area. Call (763) 334-2088 or fill out our request form.">
+  <link rel="icon" href="https://static.wixstatic.com/media/b67ca5_34bb294fb3364c1b911df00f7808d707%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/b67ca5_34bb294fb3364c1b911df00f7808d707%7Emv2.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-section { padding: 88px 0 100px; }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* ── LEFT PANEL ── */
+    .contact-info h2 {
+      font-size: clamp(28px, 3.5vw, 38px);
+      margin-bottom: 16px;
+    }
+
+    .contact-info > p {
+      color: var(--gray);
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    .info-block {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-block:last-of-type { border-bottom: none; }
+
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--light);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+    }
+
+    .info-block h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+
+    .info-block p {
+      font-size: 15px;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .info-block a { color: var(--blue); }
+    .info-block a:hover { text-decoration: underline; }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 16px;
+      font-size: 14px;
+    }
+    .hours-day  { color: var(--gray); }
+    .hours-time { font-weight: 600; color: var(--dark); }
+
+    /* ── FORM PANEL ── */
+    .contact-form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 48px 44px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form-card h3 {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .contact-form-card > p {
+      color: var(--gray);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 11px 14px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 15px;
+      color: var(--dark);
+      background: var(--white);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,74,138,0.10);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: var(--radius);
+      margin-top: 8px;
+    }
+
+    .form-success {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .form-success h3 { font-size: 22px; margin: 16px 0 8px; color: var(--navy); }
+    .form-success p  { color: var(--gray); }
+
+    /* ── MAP PLACEHOLDER ── */
+    .map-section { background: var(--light); padding: 0; }
+
+    .map-embed {
+      width: 100%;
+      height: 380px;
+      border: none;
+      display: block;
+      filter: grayscale(20%);
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+      .contact-form-card { padding: 36px 28px; }
+    }
+
+    @media (max-width: 540px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img
+          src="https://static.wixstatic.com/media/b67ca5_34bb294fb3364c1b911df00f7808d707~mv2.jpg/v1/crop/x_0,y_187,w_1386,h_1427/fill/w_125,h_125,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/NLP%202_edited.jpg"
+          alt="North Lakes Plumbing logo" class="navbar-logo">
+        <div class="navbar-name">
+          North Lakes Plumbing
+          <span>LLC</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contactus.html" class="active">Contact Us</a></li>
+        <li><a href="tel:7633342088" class="nav-cta">Call Now</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <div class="page-hero">
+    <span class="section-label">Get In Touch</span>
+    <h1>Contact Us</h1>
+    <p>Have a plumbing project in mind? We'd love to hear from you. Fill out the form or give us a call.</p>
+  </div>
+
+  <!-- ══ CONTACT SECTION ══ -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Info -->
+        <div class="contact-info reveal">
+          <span class="section-label">Reach Out</span>
+          <h2>We're Here to Help</h2>
+          <p>Whether you have a question, need an estimate, or are ready to schedule service — we make it easy to get in touch.</p>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.13.96.35 1.9.66 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Phone</h4>
+              <p><a href="tel:7633342088">(763) 334-2088</a></p>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p><a href="/cdn-cgi/l/email-protection#d083b8b5b9bcb1fe94b9a8bfbe90bebfa2a4b8bcb1bbb5a3a0bca5bdb2b9beb7feb3bfbd"><span class="__cf_email__" data-cfemail="83d0ebe6eaefe2adc7eafbecedc3edecf1f7ebefe2e8e6f0f3eff6eee1eaede4ade0ecee">[email&#160;protected]</span></a></p>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Address</h4>
+              <p>10408 180th Ave NW<br>Elk River, MN 55330</p>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>Business Hours</h4>
+              <div class="hours-grid">
+                <span class="hours-day">Mon – Fri</span>
+                <span class="hours-time">7:30am – 4:00pm</span>
+                <span class="hours-day">Sat – Sun</span>
+                <span class="hours-time">Closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="contact-form-card reveal reveal-delay-2">
+          <h3>Request a Quote</h3>
+          <p>Please take a moment to fill out the form and we'll be in touch soon.</p>
+
+          <form id="quote-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" placeholder="Jane" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Smith" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(763) 555-0100">
+            </div>
+            <div class="form-group">
+              <label for="subject">Service Needed</label>
+              <select id="subject" name="subject">
+                <option value="">Select a service...</option>
+                <option>Residential Plumbing</option>
+                <option>Commercial Plumbing</option>
+                <option>New Construction</option>
+                <option>Remodel</option>
+                <option>Water Conditioning</option>
+                <option>Service / Repair</option>
+                <option>Emergency</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MAP ══ -->
+  <div class="map-section">
+    <iframe
+      class="map-embed"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2814.6!2d-93.6!3d45.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDE4JzAwLjAiTiA5M8KwMzYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1&q=10408+180th+Ave+NW+Elk+River+MN+55330"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="North Lakes Plumbing location">
+    </iframe>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-name">North Lakes Plumbing <span>LLC</span></div>
+          <p class="footer-tagline">Your trusted partner for residential, commercial, and new construction plumbing throughout the Minneapolis Metro area.</p>
+          <a href="tel:7633342088" class="btn btn-primary">(763) 334-2088</a>
+        </div>
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            10408 180th Ave NW, Elk River, MN 55330
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.13.96.35 1.9.66 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:7633342088">(763) 334-2088</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Mon–Fri: 7:30am – 4:00pm
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>©2025 North Lakes Plumbing, LLC.

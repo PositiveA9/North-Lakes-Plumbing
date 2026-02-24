@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | North Lakes Plumbing</title>
+  <meta name="description" content="North Lakes Plumbing offers Residential Plumbing, Commercial Plumbing, New Construction, Remodels, Water Conditioning, and Service throughout the Minneapolis Metro.">
+  <link rel="icon" href="https://static.wixstatic.com/media/b67ca5_34bb294fb3364c1b911df00f7808d707%7Emv2.jpg/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/b67ca5_34bb294fb3364c1b911df00f7808d707%7Emv2.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── SERVICES LIST ── */
+    .services-section { padding: 96px 0; }
+
+    .services-intro {
+      max-width: 720px;
+      margin: 0 auto 72px;
+      text-align: center;
+    }
+    .services-intro h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 16px; }
+    .services-intro p  { color: var(--gray); font-size: 17px; }
+
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 2px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(13,31,60,0.07);
+    }
+
+    .service-block:nth-child(even) .service-block-img  { order: 2; }
+    .service-block:nth-child(even) .service-block-text { order: 1; }
+
+    .service-block-img {
+      position: relative;
+      min-height: 320px;
+    }
+
+    .service-block-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .service-block-text {
+      background: var(--white);
+      padding: 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .service-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--light);
+      line-height: 1;
+      margin-bottom: 4px;
+      user-select: none;
+    }
+
+    .service-block-text h3 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      color: var(--navy);
+    }
+
+    .service-block-text p {
+      color: var(--gray);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    /* Alternating BG */
+    .service-block:nth-child(even) .service-block-text {
+      background: var(--light);
+    }
+
+    /* ── SERVICE GRID (small cards) ── */
+    .services-grid-section {
+      background: var(--navy);
+      padding: 80px 0;
+    }
+
+    .mini-services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 8px;
+      padding: 32px 28px;
+      transition: var(--trans);
+    }
+
+    .mini-card:hover {
+      background: rgba(255,255,255,0.10);
+      transform: translateY(-4px);
+    }
+
+    .mini-card-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(232,160,32,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .mini-card h3 {
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .mini-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+    }
+
+    /* ── CTA ── */
+    .services-cta-section {
+      padding: 96px 0;
+      text-align: center;
+      background: var(--light);
+    }
+
+    .services-cta-section h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 16px;
+    }
+
+    .services-cta-section p {
+      color: var(--gray);
+      font-size: 18px;
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.revealed { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .service-block { grid-template-columns: 1fr; }
+      .service-block:nth-child(even) .service-block-img  { order: 0; }
+      .service-block:nth-child(even) .service-block-text { order: 0; }
+      .service-block-text { padding: 36px 28px; }
+      .service-block-img { min-height: 240px; }
+      .mini-services { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      .mini-services { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img
+          src="https://static.wixstatic.com/media/b67ca5_34bb294fb3364c1b911df00f7808d707~mv2.jpg/v1/crop/x_0,y_187,w_1386,h_1427/fill/w_125,h_125,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/NLP%202_edited.jpg"
+          alt="North Lakes Plumbing logo" class="navbar-logo">
+        <div class="navbar-name">
+          North Lakes Plumbing
+          <span>LLC</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contactus.html">Contact Us</a></li>
+        <li><a href="tel:7633342088" class="nav-cta">Call Now</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <div class="page-hero">
+    <span class="section-label">What We Offer</span>
+    <h1>Plumbing Services</h1>
+    <p>North Lakes Plumbing is your trusted partner for all your plumbing needs — from simple repairs to major renovations.</p>
+  </div>
+
+  <!-- ══ MAIN SERVICES ══ -->
+  <section class="services-section">
+    <div class="container">
+      <div class="services-intro reveal">
+        <p>From emergency repairs to proactive maintenance and cutting-edge installations, we've got you covered. Explore our wide range of plumbing services designed to keep your water systems flowing smoothly and your property protected.</p>
+      </div>
+
+      <!-- Residential -->
+      <div class="service-block reveal">
+        <div class="service-block-img">
+          <img src="https://static.wixstatic.com/media/b67ca5_d9b245c51a3f4262b7a21986e9ed5a1f~mv2.jpg/v1/crop/x_899,y_0,w_3597,h_3597/fill/w_240,h_240,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-kaboompics-com-6256.jpg" alt="Residential Plumbing">
+        </div>
+        <div class="service-block-text">
+          <div class="service-number">01</div>
+          <h3>Residential Plumbing</h3>
+          <p>Let North Lakes Plumbing take care of all your in-home plumbing needs. We install sinks, toilets, showers, and maintain or repair pipes to ensure proper water flow and drainage within your home — providing you with comfort and peace of mind.</p>
+          <a href="contactus.html" class="btn btn-primary">Request a Quote</a>
+        </div>
+      </div>
+
+      <!-- Remodels -->
+      <div class="service-block reveal">
+        <div class="service-block-img">
+          <img src="https://static.wixstatic.com/media/nsplsh_80c7ce0de14e4206acfc69a5fc329044~mv2.jpg/v1/crop/x_0,y_393,w_2360,h_2360/fill/w_240,h_240,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Beris%20Creatives.jpg" alt="Remodels">
+        </div>
+        <div class="service-block-text">
+          <div class="service-number">02</div>
+          <h3>Remodels</h3>
+          <p>Looking to remodel? Our services are tailored to upgrade or modify existing plumbing systems. You can count on us to ensure seamless integration of updated plumbing fixtures and systems to enhance the functionality and aesthetics of your space.</p>
+          <a href="contactus.html" class="btn btn-primary">Request a Quote</a>
+        </div>
+      </div>
+
+      <!-- Commercial -->
+      <div class="service-block reveal">
+        <div class="service-block-img">
+          <img src="https://static.wixstatic.com/media/nsplsh_8aec99ad8fe44c45987604fa98733879~mv2.jpg/v1/crop/x_500,y_0,w_2008,h_2008/fill/w_240,h_240,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Steven%20Ungermann.jpg" alt="Commercial Plumbing">
+        </div>
+        <div class="service-block-text">
+          <div class="service-number">03</div>
+          <h3>Commercial Plumbing</h3>
+          <p>We cater to businesses and commercial properties by engineering and designing custom plumbing solutions that address their distinct needs. Whether it's installation and maintenance of intricate water systems or assurance of dependable drainage, we optimize your business operations for seamless efficiency.</p>
+          <a href="contactus.html" class="btn btn-primary">Request a Quote</a>
+        </div>
+      </div>
+
+      <!-- New Construction -->
+      <div class="service-block reveal">
+        <div class="service-block-img">
+          <img src="https://static.wixstatic.com/media/nsplsh_72b533d375294ab28704741a186854e5~mv2.jpg/v1/crop/x_295,y_0,w_5304,h_5304/fill/w_240,h_240,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Marian%20Florinel%20Condruz.jpg" alt="New Construction Plumbing">
+        </div>
+        <div class="service-block-text">
+          <div class="service-number">04</div>
+          <h3>New Construction</h3>
+          <p>We specialize in new construction plumbing, installing efficient plumbing systems in newly built structures to meet modern standards and requirements — ensuring your project has a reliable infrastructure from the ground up.</p>
+          <a href="contactus.html" class="btn btn-primary">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ADDITIONAL SERVICES ══ -->
+  <section class="services-grid-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" style="color:var(--accent)">Also Available</span>
+        <h2 style="color:var(--white)">More Ways We Can Help</h2>
+      </div>
+      <div class="mini-services">
+        <div class="mini-card reveal reveal-delay-1">
+          <div class="mini-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Water Conditioning</h3>
+          <p>Water conditioning improves water quality by removing impurities like minerals and contaminants. Ensure you have access to clean, high-quality water for a healthier home.</p>
+        </div>
+        <div class="mini-card reveal reveal-delay-2">
+          <div class="mini-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 115 19.07"/><path d="M22 12A10 10 0 0012 2"/></svg>
+          </div>
+          <h3>Service &amp; Repairs</h3>
+          <p>From repairs and maintenance to emergency fixes, our service plumbing experts offer prompt and reliable solutions to keep your plumbing systems running smoothly.</p>
+        </div>
+        <div class="mini-card reveal reveal-delay-3">
+          <div class="mini-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Emergency Service</h3>
+          <p>Plumbing emergencies don't wait. Contact us and we'll respond quickly to minimize damage and restore your plumbing systems as fast as possible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <section class="services-cta-section">
+    <div class="container">
+      <span class="section-label">Get Started</span>
+      <h2>Ready to Get Your Plumbing Project Done Right?</h2>
+      <p>Contact us today for a free estimate. No job is too big or too small.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="contactus.html" class="btn btn-primary">Request a Free Quote</a>
+        <a href="tel:7633342088" class="btn" style="border:2px solid var(--navy);color:var(--navy);">(763) 334-2088</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-name">North Lakes Plumbing <span>LLC</span></div>
+          <p class="footer-tagline">Your trusted partner for residential, commercial, and new construction plumbing throughout the Minneapolis Metro area.</p>
+          <a href="tel:7633342088" class="btn btn-primary">(763) 334-2088</a>
+        </div>
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            10408 180th Ave NW, Elk River, MN 55330
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.13.96.35 1.9.66 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:7633342088">(763) 334-2088</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Mon–Fri: 7:30am – 4:00pm
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>©2025 North Lakes Plumbing, LLC. All rights reserved.</span>
+        <span>Licensed · Bonded · Insured</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
