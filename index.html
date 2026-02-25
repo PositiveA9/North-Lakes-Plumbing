@@ -76,6 +76,35 @@
     }
     .hero-phone svg { color: var(--accent); }
 
+    /* ── EXPERIENCE BADGE ── */
+    .experience-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      border-radius: 10px;
+      padding: 12px 24px;
+      box-shadow: 0 8px 32px rgba(232,160,32,0.45), 0 2px 8px rgba(0,0,0,0.2);
+      margin-bottom: 28px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .experience-badge .exp-star {
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .experience-badge .exp-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -442,6 +471,10 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
+        <div class="experience-badge">
+          <svg class="exp-star" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="exp-label">20 Years of Experience</span>
+        </div>
         <h1>Quality Plumbing<br><span>You Can Trust</span></h1>
         <p class="hero-desc">Serving the Minneapolis Metro with reliable residential, commercial, and new construction plumbing services. Licensed, bonded, and insured.</p>
         <div class="hero-actions">
