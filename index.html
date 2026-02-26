@@ -143,6 +143,97 @@
       text-transform: uppercase;
     }
 
+    /* ── SLIDESHOW ── */
+    .slideshow-section {
+      background: var(--navy);
+      padding: 72px 0;
+    }
+
+    .slideshow-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .slideshow-header h2 { color: var(--white); font-size: clamp(26px, 3.5vw, 36px); margin-bottom: 8px; }
+    .slideshow-header p  { color: rgba(255,255,255,0.65); font-size: 16px; }
+
+    .slideshow-wrapper {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 16px 56px rgba(0,0,0,0.45);
+    }
+
+    .slideshow-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.45, 0, 0.55, 1);
+    }
+
+    .slideshow-slide {
+      flex: 0 0 100%;
+    }
+
+    .slideshow-slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slideshow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(13,31,60,0.65);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      color: var(--white);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--trans);
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+    .slideshow-btn:hover { background: rgba(232,160,32,0.85); border-color: var(--accent); }
+    .slideshow-btn.prev { left: 14px; }
+    .slideshow-btn.next { right: 14px; }
+
+    .slideshow-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .slideshow-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.28);
+      border: none;
+      cursor: pointer;
+      transition: var(--trans);
+      padding: 0;
+    }
+    .slideshow-dot.active { background: var(--accent); transform: scale(1.2); }
+
+    .slideshow-cta {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 640px) {
+      .slideshow-slide img { height: 280px; }
+      .slideshow-btn { width: 38px; height: 38px; font-size: 18px; }
+    }
+
     /* ── ABOUT ── */
     .about { padding: 96px 0; }
 
@@ -528,6 +619,45 @@
     </div>
   </section>
 
+  <!-- ══ SLIDESHOW ══ -->
+  <section class="slideshow-section">
+    <div class="container">
+      <div class="slideshow-header reveal">
+        <span class="section-label">Our Work</span>
+        <h2>See It For Yourself</h2>
+        <p>A glimpse at the quality craftsmanship we bring to every job.</p>
+      </div>
+      <div class="slideshow-wrapper reveal">
+        <div class="slideshow-track" id="slideshow-track">
+          <div class="slideshow-slide">
+            <img src="https://static.wixstatic.com/media/b67ca5_8142a0ede71247539473c2d83b8b7f27~mv2.png/v1/fill/w_624,h_622,q_90,enc_avif,quality_auto/b67ca5_8142a0ede71247539473c2d83b8b7f27~mv2.png" alt="Plumbing project 1">
+          </div>
+          <div class="slideshow-slide">
+            <img src="https://static.wixstatic.com/media/b67ca5_9f81558983864dee90296c16e581abd2~mv2.png/v1/fill/w_624,h_622,q_90,enc_avif,quality_auto/b67ca5_9f81558983864dee90296c16e581abd2~mv2.png" alt="Plumbing project 2">
+          </div>
+          <div class="slideshow-slide">
+            <img src="https://static.wixstatic.com/media/b67ca5_d56aa5f0a6b44983a70e1804f4fbddac~mv2.png/v1/fill/w_622,h_622,q_90,enc_avif,quality_auto/b67ca5_d56aa5f0a6b44983a70e1804f4fbddac~mv2.png" alt="Plumbing project 3">
+          </div>
+          <div class="slideshow-slide">
+            <img src="https://static.wixstatic.com/media/b67ca5_db739e9188924060a0c3c3a25956b59d~mv2.png/v1/fill/w_624,h_622,q_90,enc_avif,quality_auto/b67ca5_db739e9188924060a0c3c3a25956b59d~mv2.png" alt="Plumbing project 4">
+          </div>
+          <div class="slideshow-slide">
+            <img src="https://static.wixstatic.com/media/b67ca5_6b5561bb3f9a4afaaf82dc55179dd46a~mv2.png/v1/fill/w_624,h_622,q_90,enc_avif,quality_auto/b67ca5_6b5561bb3f9a4afaaf82dc55179dd46a~mv2.png" alt="Plumbing project 5">
+          </div>
+          <div class="slideshow-slide">
+            <img src="https://static.wixstatic.com/media/b67ca5_0b529fbe3ac24a948a67299c1118aa2a~mv2.png/v1/fill/w_622,h_622,q_90,enc_avif,quality_auto/b67ca5_0b529fbe3ac24a948a67299c1118aa2a~mv2.png" alt="Plumbing project 6">
+          </div>
+        </div>
+        <button class="slideshow-btn prev" id="ss-prev" aria-label="Previous slide">&#8249;</button>
+        <button class="slideshow-btn next" id="ss-next" aria-label="Next slide">&#8250;</button>
+      </div>
+      <div class="slideshow-dots" id="slideshow-dots"></div>
+      <div class="slideshow-cta reveal">
+        <a href="gallery.html" class="btn btn-primary">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ SERVICES PREVIEW ══ -->
   <section class="services-preview">
     <div class="container">
@@ -689,5 +819,50 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+    // Slideshow
+    (function() {
+      const track  = document.getElementById('slideshow-track');
+      const dotsEl = document.getElementById('slideshow-dots');
+      if (!track) return;
+
+      const slides = track.querySelectorAll('.slideshow-slide');
+      const total  = slides.length;
+      let current  = 0;
+      let timer;
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(d);
+      });
+
+      function goTo(idx) {
+        current = (idx + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dotsEl.querySelectorAll('.slideshow-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+        resetTimer();
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 4500);
+      }
+
+      document.getElementById('ss-prev').addEventListener('click', () => goTo(current - 1));
+      document.getElementById('ss-next').addEventListener('click', () => goTo(current + 1));
+
+      // Pause on hover
+      track.closest('.slideshow-wrapper').addEventListener('mouseenter', () => clearInterval(timer));
+      track.closest('.slideshow-wrapper').addEventListener('mouseleave', resetTimer);
+
+      resetTimer();
+    })();
+  </script>
 </body>
 </html>
